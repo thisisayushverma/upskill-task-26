@@ -4,7 +4,7 @@ import { readFileSync,existsSync ,createReadStream } from "node:fs"
 
 const server = createServer((req,res)=>{
     // console.log("req",req);
-    console.log("req accepting");
+    console.log("req accepting",req.url);
 
 
     if (req.url === "/favicon.ico") {
@@ -12,7 +12,7 @@ const server = createServer((req,res)=>{
         return res.end();
     }
 
-    const filePath = "./client" + req.url;
+    const filePath = join('client' , req.url)
 
     if (existsSync(filePath)) {
         const ext = extname(filePath);
