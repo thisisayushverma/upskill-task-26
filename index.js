@@ -5,6 +5,7 @@ import { readFileSync,existsSync ,createReadStream } from "node:fs"
 const server = createServer((req,res)=>{
     // console.log("req",req);
     console.log("req accepting",req.url);
+    console.log("dir",process.cwd());
 
 
     if (req.url === "/favicon.ico") {
@@ -80,7 +81,9 @@ const server = createServer((req,res)=>{
 try {
     server.listen(3000,()=>{
         console.log("server is running on 3000");
+        
     });
 } catch (error) {
     console.log("error",error);
+    
 }
