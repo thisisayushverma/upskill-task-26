@@ -77,6 +77,10 @@ const server = createServer((req,res)=>{
 })
 
 
-server.listen(3000,()=>{
-    console.log("server is running on 3000");
-});
+try {
+    server.listen(3000,()=>{
+        console.log("server is running on 3000");
+    });
+} catch (error) {
+    console.log("error",error);
+}
