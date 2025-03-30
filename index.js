@@ -1,12 +1,22 @@
 import { createServer } from "node:http";
 import path , { extname ,join} from "node:path";
-import { readFileSync,existsSync ,createReadStream } from "node:fs"
+import { readFileSync,existsSync ,createReadStream, access, readdirSync } from "node:fs"
 
 const server = createServer((req,res)=>{
     // console.log("req",req);
     console.log("req accepting",req.url);
-    console.log("dir",process.cwd());
+    console.log("dir filename",import.meta.filename);
+    console.log("dir dirname",import.meta.dirname);
+    if(access("client" , (err) => {
+        if(err){
+            console.log("error while checking client folder exist or not",err);
+        }
 
+        console.log("client folder exist");
+        const filecontent = readdirSync("client")
+        console.log(filecontent);
+    }))
+    
 
     if (req.url === "/favicon.ico") {
         res.writeHead(204, { "Content-Type": "image/x-icon" });
