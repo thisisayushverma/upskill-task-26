@@ -5,19 +5,6 @@ import { readFileSync,existsSync ,createReadStream, access, readdirSync } from "
 const server = createServer((req,res)=>{
     // console.log("req",req);
     console.log("req accepting",req.url);
-    console.log("dir filename",import.meta.filename);
-    console.log("dir dirname",import.meta.dirname);
-    const filecontent = readdirSync(import.meta.dirname)
-    console.log(filecontent);
-    if(access("client" , (err) => {
-        if(err){
-            console.log("error while checking client folder exist or not",err);
-        }
-
-        console.log("client folder exist");
-        const filecontent = readdirSync("client")
-        console.log(filecontent);
-    }))
     
 
     if (req.url === "/favicon.ico") {
@@ -83,7 +70,7 @@ const server = createServer((req,res)=>{
     //     res.end("home")
     // }
     else{
-        res.writeHead("200",{"Content-Type":"text/html"})
+        res.writeHead("404",{"Content-Type":"text/html"})
         res.end("<h1>404 <br> Page Not Found</h1>");
         console.log("req not found",req.url);
     }
