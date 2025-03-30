@@ -7,6 +7,8 @@ const server = createServer((req,res)=>{
     console.log("req accepting",req.url);
     console.log("dir filename",import.meta.filename);
     console.log("dir dirname",import.meta.dirname);
+    const filecontent = readdirSync(import.meta.dirname)
+    console.log(filecontent);
     if(access("client" , (err) => {
         if(err){
             console.log("error while checking client folder exist or not",err);
